@@ -1,0 +1,9 @@
+{
+    "UserPoolId": "$userPoolId",
+    "ClientId": "$ClientId",
+    "AuthFlow": "ADMIN_NO_SRP_AUTH",
+    "AuthParameters": {
+        "USERNAME": "$userName",
+        "PASSWORD": "$userPassword"
+    }
+}
