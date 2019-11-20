@@ -1,0 +1,8 @@
+{
+	"deployment": {
+		"region": "us-west-2",
+		"serviceName": "myname1",
+		"userPoolName": "userpoolname1",
+		"clientName": "clientname1"
+	}
+}
