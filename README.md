@@ -24,7 +24,7 @@ If you want to test the authentification, you need to create a user into your Co
 
 ### Create a user
 
-You have to connect to the AWS Console and go on Cognito -> User Pool -> Your User Pool (get and save your Pool Id) --> App Clients and click on `Show details` and click on `Enable username password auth for admin APIs for authentication (ALLOW_ADMIN_USER_PASSWORD_AUTH)` (get and save your App client Id too).
+You have to connect to the AWS Console and go on Cognito -> User Pool -> Your User Pool (get and save your Pool Id) --> App Clients and click on `Show details` and click on `Enable username password auth for admin APIs for authentication (ALLOW_ADMIN_USER_PASSWORD_AUTH)` and Save app client changes. (get and save your App client Id too).
 
 To create a user you have to launch the following command (replace the $ variables, and note that you will need to change the password):
 
