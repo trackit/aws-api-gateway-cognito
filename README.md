@@ -14,7 +14,7 @@ You should modify with your proper information.
 
 ## Deployment
 
-You can now start the deployment into using the serverless command: `serverless deploy`.
+You can now start the deployment into using the serverless command: `$> serverless deploy`.
 
 ## Test your API Gateway with Cognito
 
@@ -28,12 +28,12 @@ You have to connect to the AWS Console and go on Cognito -> User Pool -> Your Us
 
 To create a user you have to launch the following command (replace the $ variables, and note that you will need to change the password):
 
-`aws cognito-idp admin-create-user --user-pool-id $userPoolId --username $userName --temporary-password $userPassword`
+`$> aws cognito-idp admin-create-user --user-pool-id $userPoolId --username $userName --temporary-password $userPassword`
 
 
 You now have to modify the `example-auth.json` into replacing the different variables and do the following command to initiate your user:
 
-`aws cognito-idp admin-initiate-auth --cli-input-json file://example-auth.json`
+`$> aws cognito-idp admin-initiate-auth --cli-input-json file://example-auth.json`
 
 copy the value of `Session` in the output and do the following command to change the password (replace the $ variables):
 
@@ -44,6 +44,6 @@ copy the value of `Session` in the output and do the following command to change
 
 Once you have your user created, initiated and with a new password (don't forget to change the password by the new password in the `example-auth.json` file) you can do the following command and get your token:
 
-`aws cognito-idp admin-initiate-auth --cli-input-json file://example-auth.json`
+`$> aws cognito-idp admin-initiate-auth --cli-input-json file://example-auth.json`
 
 In the output, the value of `tokenId` is your token and you can use it to make some requests to your endpoints (with Postman for example).
