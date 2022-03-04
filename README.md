@@ -27,6 +27,8 @@ When the deployment is done, you can find in the AWS Console the different resou
 
 If you want to test the authentication, you need to create a user into your Cognito User Pool and get a token for your user, that's why you have the `example-auth.json` file.
 
+First, you have to connect to the AWS Console and go on Cognito -> User Pool -> Your User Pool (get and save your Pool Id) --> App Clients and click on `Show details` and click on `Enable username password auth for admin APIs for authentication (ALLOW_ADMIN_USER_PASSWORD_AUTH)` and Save app client changes. (get and save your App client Id too).
+
 ### Create and authenticate a user using our python script (new)
 
 We've created a new [script](cognito_user.py) that you can use to create and/or authenticate a user.
@@ -34,8 +36,6 @@ You can take a look at the different possibility using this script by running th
 `$ ./cognito_user.py --help`
 
 #### Create a user
-
-You have to connect to the AWS Console and go on Cognito -> User Pool -> Your User Pool (get and save your Pool Id) --> App Clients and click on `Show details` and click on `Enable username password auth for admin APIs for authentication (ALLOW_ADMIN_USER_PASSWORD_AUTH)` and Save app client changes. (get and save your App client Id too).
 
 Once it's done you can simply run the following command:
 
@@ -60,8 +60,6 @@ $ ./cognito_user.py mail@example.com Password1! $userPoolId $clientId --region $
 ### Create and authenticate a user step by step with AWS CLI
 
 #### Create a user
-
-You have to connect to the AWS Console and go on Cognito -> User Pool -> Your User Pool (get and save your Pool Id) --> App Clients and click on `Show details` and click on `Enable username password auth for admin APIs for authentication (ALLOW_ADMIN_USER_PASSWORD_AUTH)` and Save app client changes. (get and save your App client Id too).
 
 To create a user you have to launch the following command (replace the $ variables, and note that you will need to change the password):
 
