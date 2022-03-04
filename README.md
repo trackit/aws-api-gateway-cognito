@@ -6,6 +6,13 @@ AWS API Gateway with lambdas functions and AWS Cognito
 
 ![Infrastructure schema](infrastructure.png)
 
+## Requirements
+
+- [NodeJS](https://nodejs.org/en/)
+  - [Serverless](https://www.serverless.com/) `$ npm install serverless -g`
+- [Python3](https://www.python.org/downloads/) with pip (optional: see `Create and authenticate a user using our python script (new)` part)
+  - [Boto3](https://aws.amazon.com/sdk-for-python/) `$ python -m pip install boto3`
+
 ## Configuration
 
 At first, you need to have the credetials for your AWS account in `~/.aws/credentials`.
@@ -40,10 +47,12 @@ You can take a look at the different possibility using this script by running th
 Once it's done you can simply run the following command:
 
 ```shell
-$ ./cognito_user.py mail@example.com Password1! $userPoolId $clientId --region $region --profile $profile --create
+$ ./cognito_user.py mail@example.com $userPoolId $clientId --region $region --profile $profile --create
+User password:
+Token: eyJraWQiOiJuOXJFTE1qZlwvZ0hCakEwRDFOVzZGYk...
 ```
 
-> Note that the given password will be your final password. We'll first generate a random temporary password to validate the NEW_PASSWORD_REQUIRED change.
+> Note that the given password (`User password`) will be your final password. We'll first generate a random temporary password to validate the NEW_PASSWORD_REQUIRED change.
 >
 > The `--profile` is your profile already configured through AWS CLI (see `$ aws configure help`)
 >
@@ -54,7 +63,9 @@ $ ./cognito_user.py mail@example.com Password1! $userPoolId $clientId --region $
 If you've already created a user you can avoid the `--create` to only authenticate your user. It will also return you a token that you can use to make authenticated requests:
 
 ```shell
-$ ./cognito_user.py mail@example.com Password1! $userPoolId $clientId --region $region --profile $profile
+$ ./cognito_user.py mail@example.com $userPoolId $clientId --region $region --profile $profile
+User password:
+Token: eyJraWQiOiJuOXJFTE1qZlwvZ0hCakEwRDFOVzZGYk...
 ```
 
 ### Create and authenticate a user step by step with AWS CLI

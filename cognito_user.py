@@ -7,6 +7,7 @@ import botocore.client
 import logging
 import random
 import string
+from getpass import getpass
 
 
 def get_random_password(size):
@@ -82,7 +83,6 @@ def parse_arguments():
                     "to help you quickly test your cognito pools and apps."
     )
     parser.add_argument("username", type=str)
-    parser.add_argument("password", type=str)
     parser.add_argument("user_pool_id", type=str, help="The cognito user pool id")
     parser.add_argument("client_id", type=str, help="The cognito user pool client id")
     parser.add_argument("--profile", type=str, default="default", help="AWS Profile to use. Default: default")
@@ -100,13 +100,14 @@ def cognito_user():
     args = parse_arguments()
     logging.basicConfig(format="%(asctime)s %(message)s", datefmt="[%I:%M:%S %p]", level=logging.INFO)
     try:
+        password = getpass("User password:")
         session = boto3.session.Session(profile_name=args.profile, region_name=args.region)
         client = session.client("cognito-idp")
         if args.create:
-            token = create_user(client, args.username, args.password, args.user_pool_id, args.client_id)
+            token = create_user(client, args.username, password, args.user_pool_id, args.client_id)
             logging.info("Token: %s", token)
         else:
-            token = authenticate_user(client, args.username, args.password, args.user_pool_id, args.client_id)
+            token = authenticate_user(client, args.username, password, args.user_pool_id, args.client_id)
             logging.info("Token: %s", token)
     except Exception as e:
         logging.error("error while processing: %s", e)
